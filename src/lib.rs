@@ -157,7 +157,7 @@ pub enum Interrupt {
 unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
     #[inline(always)]
     fn number(self) -> u16 {
-        match *self {
+        match self {
             Interrupt::POWER_CLOCK => 0,
             Interrupt::RADIO => 1,
             Interrupt::UARTE0_UART0 => 2,
