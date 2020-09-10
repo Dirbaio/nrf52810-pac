@@ -153,9 +153,10 @@ pub enum Interrupt {
     #[doc = "29 - PDM"]
     PDM,
 }
-unsafe impl bare_metal::Nr for Interrupt {
-    #[inline]
-    fn nr(&self) -> u8 {
+
+unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
+    #[inline(always)]
+    fn number(self) -> u16 {
         match *self {
             Interrupt::POWER_CLOCK => 0,
             Interrupt::RADIO => 1,
